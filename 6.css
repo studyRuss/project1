@@ -1,0 +1,41 @@
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Введите число N:");
+        int n = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        Console.Write("Введите цифру Х:");
+        int x = int.Parse(Console.ReadLine());
+        int countX = 0;
+        int nCount = (int)Math.Log10(n) + 1;
+        int[] numbera = new int[nCount];
+        for (int i = nCount-1; i>=0; i -= 1)
+        {
+            numbera[i] = n%10;
+            n = n / 10;
+        }
+        for (int i=0; i<numbera.Length; i++)
+        {
+            if (numbera[i] == x)
+            {
+                countX += 1;
+            }
+        }
+        int[] numbers = new int[nCount-countX];
+        for (int i=0, j=0; i<numbera.Length; i++)
+        {
+            if (numbera[i] != x)
+            {
+                numbers[j] = numbera[i];
+                j++;
+            }
+        }
+        Console.WriteLine();
+        Console.Write("Итоговое число:");
+        for (int i=0; i<numbers.Length; i++)
+        {
+            Console.WriteLine(numbers[i]);
+        }
+    }
+}
